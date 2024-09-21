@@ -16,7 +16,13 @@ mongoose
     });
 
 const app = express();
-app.use(express.json());       
+app.use(express.json());
+
+// Request logging middleware
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});  
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000!!!');
@@ -26,6 +32,8 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 
 // Error handling middleware
+//It's important to note that this middleware function should be defined after all other route handlers and middleware functions, 
+//as it will only be executed if an error occurs in the previous middleware or route handlers.
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
@@ -35,3 +43,4 @@ app.use((err, req, res, next) => {
         message 
     });
 }); 
+
