@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Initial state for the user slice
 const initialState = {
-    currenUser: null, // Holds the current user's information, initially null
+    currentUser: null, // Holds the current user's information, initially null
     error: null,      // Holds any error messages, initially null
     loading: false,   // Indicates if a sign-in operation is in progress, initially false
 };
@@ -18,7 +18,7 @@ const userSlice = createSlice({
         },
         // Reducer to handle a successful sign-in operation
         signInSuccess: (state, action) => {
-            state.currenUser = action.payload; // Update current user with the payload data
+            state.currentUser = action.payload; // Update current user with the payload data
             state.loading = false;             // Set loading to false as sign-in is complete
             state.error = null;                // Clear any previous errors
         },

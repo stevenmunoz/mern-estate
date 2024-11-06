@@ -69,7 +69,7 @@ export default function SignIn() {
       dispatch(signInSuccess(data));
       
       // Navigate to the home page upon successful sign-in
-      navigate('/');
+      navigate('/profile');
     } catch (error) {
       // Dispatch the signInFailure action with the error message in case of an exception
       dispatch(signInFailure(error.message));
